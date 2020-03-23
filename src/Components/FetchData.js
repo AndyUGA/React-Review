@@ -28,10 +28,10 @@ export class FetchData extends React.Component {
         })
             .then(res => res.json())
             .then(json => {
-                console.log(json.data.covid19Stats);
+                console.log(json.data);
                 this.setState({
                     isLoaded: true,
-                    items: json.data.covid19Stats,
+                    items: json.data,
                 })
             });
     }
@@ -45,9 +45,18 @@ export class FetchData extends React.Component {
         }
         else {
             return (
+                <div>
+                    <div className = "title">
+                    Corona Virus Tracker
+                    </div>
+                    <div className = "subTitle">
+                   Last Updated: {this.state.items.lastChecked}
+                    </div>
+                 
+               
                 <div className="flexContainer">
-
-                    {items.map((item, index) => (
+                  
+                    {items.covid19Stats.map((item, index) => (
                         <div className="cardDetails">
                             <Card className="cardGrow">
                                 <Card.Body>
@@ -74,6 +83,7 @@ export class FetchData extends React.Component {
                         </div>
                     ))}
 
+                </div>
                 </div>
             )
         }
