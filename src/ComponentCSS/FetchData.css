@@ -1,0 +1,19 @@
+
+.flexContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.cardDetails {
+    margin: 30px 5px 5px 30px;
+    
+
+}
+
+.cardGrow {
+   width: 200px;
+   height: 165px;
+   max-height:200px;
+}

@@ -1,0 +1,16 @@
+
+
+
+.backgroundImage {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("https://github.com/AndyUGA/AndyUGA.github.io/blob/master/img/background/Beach.jpg?raw=true");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    font-size: 2rem;
+}
+
