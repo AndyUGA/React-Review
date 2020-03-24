@@ -6,6 +6,9 @@ import Button from 'react-bootstrap/Button';
 
 
 export class FetchData extends React.Component {
+    componentDidMount() {
+        document.title = 'Coronavirus Tracker';
+    }
 
 
     constructor(props) {
@@ -19,19 +22,19 @@ export class FetchData extends React.Component {
 
     componentDidMount() {
 
-        fetch("https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country=US", {
+        fetch("https://covidapi.info/api/v1/global", {
             "method": "GET",
             "headers": {
-                "x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
+                "x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
                 "x-rapidapi-key": "c930bb584emshe095836889a8206p1676f8jsna197b0a8736e"
             }
         })
             .then(res => res.json())
             .then(json => {
-                console.log(json.data);
+                console.log(json);
                 this.setState({
                     isLoaded: true,
-                    items: json.data,
+                    items: json,
                 })
             });
     }
@@ -46,44 +49,56 @@ export class FetchData extends React.Component {
         else {
             return (
                 <div>
-                    <div className = "title">
-                    Corona Virus Tracker
+                    <div className="title">
+                        Corona Virus Tracker
                     </div>
-                    <div className = "subTitle">
-                   Last Updated: {this.state.items.lastChecked}
+
+
+
+                    <div className="flexContainer">
+
+                        <Card className="flexItem2 my-5 py-2">
+                            <Card.Body>
+
+                                <div className="subTitle">
+                                    Confirmed Cases
+                                </div>
+                                <Card.Text>
+                                    {this.state.items.result.confirmed}
+                                </Card.Text>
+
+                            </Card.Body>
+                        </Card>
                     </div>
-                 
-               
-                <div className="flexContainer">
-                  
-                    {items.covid19Stats.map((item, index) => (
-                        <div className="cardDetails">
-                            <Card className="cardGrow">
-                                <Card.Body>
+                    <div className="flexContainer">
+                        <Card className="flexItem1">
+                            <Card.Body>
 
-                                    <Card.Title>
-                                        ({index + 1})  {item.province}
-                                    </Card.Title>
-                                    <Card.Text>
-                                        <b>
-                                            {item.confirmed}
-                                        </b> 
-                                        &nbsp;
-                                           Confirmed Cases
-                                    </Card.Text>
-                                    <Card.Text>
-                                        <b>
-                                        {item.deaths} 
-                                        </b>
-                                        &nbsp;
-                                      Confirmed Deaths
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    ))}
+                                <div className="subTitle deathColor">
+                                    Confirmed Deaths
+                                </div>
+                                <Card.Text className = "deathColor">
+                                    {this.state.items.result.deaths}
+                                </Card.Text>
 
-                </div>
+                            </Card.Body>
+                        </Card>
+                        <Card className="flexItem1">
+                            <Card.Body>
+
+                                <div className="subTitle recoveredColor">
+                                    Confirmed Recovered
+                                </div>
+                                <Card.Text className ="recoveredColor">
+                                    {this.state.items.result.recovered}
+                                </Card.Text>
+
+                            </Card.Body>
+                        </Card>
+
+                    </div>
+
+
                 </div>
             )
         }

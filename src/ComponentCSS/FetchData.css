@@ -5,11 +5,18 @@
     justify-content: center;
 }
 
+.flexItem1 {
+    flex-grow: 1;
+}
+
+.flexItem2 {
+    flex-grow: 1;
+    
+}
+
 
 .cardDetails {
     margin: 30px 5px 5px 30px;
-    
-
 }
 
 .cardGrow {
@@ -24,6 +31,14 @@
 }
 
 .subTitle {
-    font-size: 2rem;
-    margin-top: 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.deathColor {
+    color: red;
+}
+
+.recoveredColor {
+    color: #70A800;
 }
